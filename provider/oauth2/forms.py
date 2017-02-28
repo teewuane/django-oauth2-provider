@@ -1,6 +1,13 @@
 from django import forms
 from django.contrib.auth import authenticate
-from django.utils.encoding import smart_unicode
+try:
+    # python 2
+    from django.utils.encoding import smart_unicode
+except ImportError:
+    # Python 3
+    # Not ideal to call it the old name but it will have to work for now.
+    from django.utils.encoding import smart_text as smart_unicode
+
 from django.utils.translation import ugettext as _
 from .. import scope
 from ..constants import RESPONSE_TYPE_CHOICES, SCOPES
