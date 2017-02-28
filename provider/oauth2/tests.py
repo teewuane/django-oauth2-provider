@@ -1,5 +1,10 @@
 import json
-import urlparse
+
+try:
+    import urlparse
+except ImportError:
+    from urllib.parse import urlparse
+
 import datetime
 from django.http import QueryDict
 from django.conf import settings
